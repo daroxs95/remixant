@@ -5,7 +5,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import "./tailwind.css";
+import "./globals.css";
+import "./antd.css";
+import theme from "~/theme";
+import { ConfigProvider } from "antd";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,7 +20,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <ConfigProvider theme={theme}>{children}</ConfigProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

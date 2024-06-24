@@ -7,12 +7,17 @@
 import { RemixBrowser } from "@remix-run/react";
 import { startTransition, StrictMode } from "react";
 import { hydrateRoot } from "react-dom/client";
+import { createCache, StyleProvider } from "@ant-design/cssinjs";
 
 startTransition(() => {
+  const cache = createCache();
+
   hydrateRoot(
     document,
     <StrictMode>
-      <RemixBrowser />
+      <StyleProvider cache={cache}>
+        <RemixBrowser />
+      </StyleProvider>
     </StrictMode>
   );
 });
